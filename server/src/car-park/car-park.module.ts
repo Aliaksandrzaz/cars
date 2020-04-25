@@ -2,20 +2,24 @@ import { Module } from '@nestjs/common'
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { CarsController } from "./cars/cars.controller"
 import { CarsService } from "./cars/cars.service"
-import { CarsEntity } from "../entity/carsEntity"
+import { CarsEntity } from "./entity/cars.entity"
 import { TrailerController } from "./trailers/trailer.controller"
 import { TrailerService } from "./trailers/trailer.service"
-import { TrailersEntity } from "../entity/trailersEntity"
-import { UsersController } from "./users/users.controller"
-import { UsersService } from "./users/users.service"
-import { UsersEntity } from "../entity/users.entity"
+import { TrailersEntity } from "./entity/trailers.entity"
+import { DriversController } from "./drivers/drivers.controller"
+import { DriversService } from "./drivers/drivers.service"
+import { DriversEntity } from "./entity/drivers.entity"
 import { CarParkService } from "./car-park.service"
 import { CarParkController } from "./car-park.controller"
+import { RoadListService } from "./road-list/road-list.service"
+import { RoadListController } from "./road-list/road-list.controller"
+import { RoadListEntity } from "./entity/road-list.entity"
+import { DailyReportsEntity } from "./entity/daily-reports.entity"
 
 @Module({
-  controllers: [CarsController, TrailerController, UsersController, CarParkController],
-  providers: [CarsService, TrailerService, UsersService, CarParkService],
-  imports: [TypeOrmModule.forFeature([CarsEntity, TrailersEntity, UsersEntity])]
+  controllers: [CarsController, TrailerController, DriversController, CarParkController, RoadListController],
+  providers: [CarsService, TrailerService, DriversService, CarParkService, RoadListService],
+  imports: [TypeOrmModule.forFeature([CarsEntity, RoadListEntity, DriversEntity, DailyReportsEntity, TrailersEntity])]
 })
 export class CarParkModule {
 }

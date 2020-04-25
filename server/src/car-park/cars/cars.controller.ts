@@ -4,17 +4,17 @@ import { CreateCarDto } from "./dto/create-car.dto"
 import { CarsService } from "./cars.service"
 import { EditCarDto } from "./dto/edit-car.dto"
 
-@Controller("/car")
+@Controller("/cars")
 export class CarsController {
   constructor(private carsService: CarsService) {
   }
 
-  @Post("/create")
+  @Post("/")
   createCar(@Body() body: CreateCarDto) {
     return this.carsService.createCar(body)
   }
 
-  @Post("/:id/edit")
+  @Post("/:id")
   editCar(@Body() body: EditCarDto) {
     return this.carsService.editCar(body)
   }

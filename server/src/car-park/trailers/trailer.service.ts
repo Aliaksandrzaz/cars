@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 
 import { CreateTrailerDto } from "./dto/create-trailer.dto"
-import { TrailersEntity } from "../../entity/trailersEntity"
+import { TrailersEntity } from "../entity/trailers.entity"
 import { EditTrailerDto } from "./dto/edit-trailer.dto"
 
 @Injectable()
@@ -17,21 +17,16 @@ export class TrailerService {
   async createTrailer(createTrailer: CreateTrailerDto) {
     const trailer = new TrailersEntity()
 
-    trailer.model = createTrailer.model
-    trailer.registrationNumber = createTrailer.registrationNumber
-    trailer.trailerType = createTrailer.trailerType
-    trailer.weight = createTrailer.weight
+    trailer.weight = 100
+    trailer.model = "test trailer"
+    trailer.registration_number = "asd"
+    trailer.type = "dumpTruck"
 
     return await this.trailerRepository.save(trailer)
   }
 
   async editTrailer(editTrailer: EditTrailerDto) {
     const trailer = await this.trailerRepository.findOne(editTrailer.id)
-
-    trailer.model = editTrailer.model
-    trailer.registrationNumber = editTrailer.registrationNumber
-    trailer.trailerType = editTrailer.trailerType
-    trailer.weight = editTrailer.weight
 
     return await this.trailerRepository.save(trailer)
   }

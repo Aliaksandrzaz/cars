@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
 import { getManager } from "typeorm"
-import { CarsEntity } from "../entity/carsEntity"
-import { TrailersEntity } from "../entity/trailersEntity"
-import { UsersEntity } from "../entity/users.entity"
+import { CarsEntity } from "./entity/cars.entity"
+import { TrailersEntity } from "./entity/trailers.entity"
+import { DriversEntity } from "./entity/drivers.entity"
 
 @Injectable()
 export class CarParkService {
@@ -22,7 +22,7 @@ export class CarParkService {
     const entityManager = getManager()
     const cars = entityManager.find(CarsEntity)
     const trailers = entityManager.find(TrailersEntity)
-    const users = entityManager.find(UsersEntity)
+    const users = entityManager.find(DriversEntity)
     return Promise.all([cars, trailers, users])
   }
 }

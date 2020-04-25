@@ -4,12 +4,12 @@ import { CreateTrailerDto } from "./dto/create-trailer.dto"
 import { TrailerService } from "./trailer.service"
 import { EditTrailerDto } from "./dto/edit-trailer.dto"
 
-@Controller("/trailer")
+@Controller("/trailers")
 export class TrailerController {
   constructor(private trailerService: TrailerService) {
   }
 
-  @Post("/create")
+  @Post("/")
   createTrailer(@Body() body: CreateTrailerDto) {
     return this.trailerService.createTrailer(body)
   }
