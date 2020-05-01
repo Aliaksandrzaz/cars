@@ -1,33 +1,30 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common"
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
-import { CreateDriversDto } from "./dto/create-drivers.dto"
-import { DriversService } from "./drivers.service"
-import { EditDriversDto } from "./dto/edit-drivers.dto"
+import { CreateDriversDto } from './dto/create-drivers.dto';
+import { DriversService } from './drivers.service';
+import { EditDriversDto } from './dto/edit-drivers.dto';
 
-@Controller("/drivers")
+@Controller('/drivers')
 export class DriversController {
-  constructor(private driversService: DriversService) {
-  }
+  constructor(private driversService: DriversService) {}
 
-  @Post("/")
+  @Post('/')
   createDriver(@Body() body: CreateDriversDto) {
-    return this.driversService.createDriver(body)
+    return this.driversService.createDriver(body);
   }
 
-  @Post("/:id")
-  editDriver(@Body() body: EditDriversDto) {
-    return this.driversService.editDriver(body)
+  @Post('/:id')
+  editDriver(@Param() param, @Body() body: EditDriversDto) {
+    return this.driversService.editDriver(parseFloat(param.id), body);
   }
 
-  @Get("/:id")
-  getDriver(@Param() id) {
-    console.log(id)
-    return this.driversService.getDriver(parseInt(id.id))
+  @Get('/:id')
+  getDriver(@Param() param) {
+    return this.driversService.getDriver(parseInt(param.id));
   }
 
-  @Get("/")
+  @Get('/')
   getAllDrivers() {
-    return this.driversService.getAllDrivers()
+    return this.driversService.getAllDrivers();
   }
-
 }

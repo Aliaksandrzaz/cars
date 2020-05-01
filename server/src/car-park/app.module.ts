@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common'
-import { TypeOrmModule } from "@nestjs/typeorm"
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CarParkModule } from "./car-park.module"
+import { CarParkModule } from './car-park.module';
 
-import { CarsEntity } from "./entity/cars.entity"
-import { RoadListEntity } from "./entity/road-list.entity"
-import { DriversEntity } from "./entity/drivers.entity"
-import { DailyReportsEntity } from "./entity/daily-reports.entity"
-import { TrailersEntity } from "./entity/trailers.entity"
+import { CarsEntity } from './entities/cars.entity';
+import { RoadListEntity } from './entities/road-list.entity';
+import { DriversEntity } from './entities/drivers.entity';
+import { DailyReportEntity } from './entities/daily-report.entity';
+import { TrailersEntity } from './entities/trailers.entity';
 
 @Module({
   imports: [
@@ -20,10 +20,15 @@ import { TrailersEntity } from "./entity/trailers.entity"
       database: 'test',
       autoLoadEntities: true,
       synchronize: true,
-      entities: [CarsEntity, RoadListEntity, DriversEntity, DailyReportsEntity, TrailersEntity]
+      entities: [
+        CarsEntity,
+        RoadListEntity,
+        DriversEntity,
+        DailyReportEntity,
+        TrailersEntity,
+      ],
     }),
-    CarParkModule
+    CarParkModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

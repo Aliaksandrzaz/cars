@@ -1,8 +1,8 @@
-import { TrailerType } from "../../../models"
+import { TrailerType } from '../../../models';
 
 export class CreateTrailerDto {
-  model: string
-  registrationNumber: string
-  trailerType: TrailerType
-  weight: number
+  model: string;
+  registrationNumber: string;
+  trailerType: TrailerType;
+  weight: number;
 }

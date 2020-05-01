@@ -1,31 +1,30 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common"
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
-import { CreateTrailerDto } from "./dto/create-trailer.dto"
-import { TrailerService } from "./trailer.service"
-import { EditTrailerDto } from "./dto/edit-trailer.dto"
+import { CreateTrailerDto } from './dto/create-trailer.dto';
+import { TrailerService } from './trailer.service';
+import { EditTrailerDto } from './dto/edit-trailer.dto';
 
-@Controller("/trailers")
+@Controller('/trailers')
 export class TrailerController {
-  constructor(private trailerService: TrailerService) {
-  }
+  constructor(private trailerService: TrailerService) {}
 
-  @Post("/")
+  @Post('/')
   createTrailer(@Body() body: CreateTrailerDto) {
-    return this.trailerService.createTrailer(body)
+    return this.trailerService.createTrailer(body);
   }
 
-  @Post("/:id/edit")
+  @Post('/:id/edit')
   editTrailer(@Body() body: EditTrailerDto) {
-    return this.trailerService.editTrailer(body)
+    return this.trailerService.editTrailer(body);
   }
 
-  @Get("/:id")
+  @Get('/:id')
   getTrailer(@Param() id: number) {
-    return this.trailerService.getTrailer(id)
+    return this.trailerService.getTrailer(id);
   }
 
-  @Get("/")
+  @Get('/')
   getAllTrailers() {
-    return this.trailerService.getAllTrailers()
+    return this.trailerService.getAllTrailers();
   }
 }

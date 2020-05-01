@@ -1,19 +1,37 @@
-import { Body, Controller, Get, Post } from "@nestjs/common"
-import { CreateRoadListDto } from "./dto/create-road-list.dto"
-import { RoadListService } from "./road-list.service"
+import { Body, Controller, Get, Post, Param, Put } from '@nestjs/common';
+import { CreateRoadListDto } from './dto/create-road-list.dto';
+import { RoadListService } from './road-list.service';
+import { EditRoadListDto } from './dto/edit-road-list.dto';
 
-@Controller("/road-list")
+@Controller('/road-lists')
 export class RoadListController {
-  constructor(private createListService: RoadListService) {
+  constructor(private roadListService: RoadListService) {}
+
+  @Get('/')
+  getRoadLists() {
+    return this.roadListService.getRoadLists();
   }
 
-  @Get("/")
+  @Post('/')
+  createRoadList(@Body() createRoadList: CreateRoadListDto) {
+    return this.roadListService.createRoadList(createRoadList);
+  }
+
+  @Get('/:id')
   getRoadList() {
-    return this.createListService.getRoadList()
+    return this.roadListService.getRoadLists();
   }
 
-  @Post("/")
-  createList(@Body() createList: CreateRoadListDto) {
-    return this.createListService.createList(createList)
+  @Post('/:id')
+  editRoadList(@Param() params, @Body() editRoadList: EditRoadListDto) {
+    return this.roadListService.editRoadList(
+      parseFloat(params.id),
+      editRoadList,
+    );
+  }
+
+  @Post('/:id/fuel')
+  addFuel() {
+    return this.roadListService.addFuel();
   }
 }
