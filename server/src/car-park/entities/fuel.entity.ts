@@ -21,11 +21,11 @@ export class FuelEntity {
   type: string;
 
   @Column({nullable: true})
-  gas_station: string
+  gasStation: string
 
-  @Column({ name: 'roadListId' })
-  road_list_id: number;
+  @Column()
+  roadListId: number;
 
   @ManyToOne((type) => RoadListEntity, (roadList) => roadList.fuel)
-  road_list: RoadListEntity;
+  roadList: RoadListEntity;
 }

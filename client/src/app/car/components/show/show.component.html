@@ -1,0 +1,45 @@
+<nz-page-header>
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/']">
+        <i nz-icon nzType="home" nzTheme="outline"></i>
+      </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/cars']">
+        Список автомобилей
+      </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Детали
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-card
+  style="width: 450px;"
+  *ngIf="car$ | async as car"
+  [nzTitle]="car.model"
+>
+  <p><span class="description">Тип: </span>{{ chooseType(car.type) }}</p>
+  <p>
+    <span class="description">Регистрационный номер: </span
+    >{{ car.registrationNumber }}
+  </p>
+  <p>
+    <span class="description">Норма расхода топлива, л/км: </span
+    >{{ car.fuelConsumptionRate }}
+  </p>
+  <p>
+    <span class="description">Зимняя норма расхода топлива, %: </span
+    >{{ car.winterFuelConsumptionRate }}
+  </p>
+  <p>
+    <span class="description">Норма расхода AdBlue, л/км: </span
+    >{{ car.adBlueConsumptionRate }}
+  </p>
+  <p>
+    <span class="description">Норма расхода отопителя, л/ч: </span
+    >{{ car.weBastoConsumptionRate }}
+  </p>
+</nz-card>

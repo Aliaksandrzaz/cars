@@ -7,5 +7,5 @@ export class CreateCarDto {
   winterFuelConsumptionRate: number;
   adBlueConsumptionRate: number;
   weBastoConsumptionRate: number;
-  carType: CarType;
+  type: CarType;
 }

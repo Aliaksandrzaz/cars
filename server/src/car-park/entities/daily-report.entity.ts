@@ -15,15 +15,15 @@ export class DailyReportEntity {
 
   // TODO: ADD GEOGRAPHY
   @Column({ nullable: true })
-  loading_place: string;
+  loadingPlace: string;
 
   // TODO: ADD GEOGRAPHY
   @Column({ nullable: true })
-  unloading_place: string;
+  unloadingPlace: string;
 
-  @Column({ name: 'roadListId' })
-  road_list_id: number;
+  @Column()
+  roadListId: number;
 
-  @ManyToOne((type) => RoadListEntity, (roadList) => roadList.daily_reports)
-  road_list: RoadListEntity;
+  @ManyToOne((type) => RoadListEntity, (roadList) => roadList.dailyReports)
+  roadList: RoadListEntity;
 }

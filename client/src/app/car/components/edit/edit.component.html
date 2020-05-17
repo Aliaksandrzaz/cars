@@ -1,0 +1,150 @@
+<nz-page-header>
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/']">
+        <i nz-icon nzType="home" nzTheme="outline"></i>
+      </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/cars']">
+        Список автомобилей
+      </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Редактировать автомобиль
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-card>
+  <form nz-form [formGroup]="editForm" *ngIf="!!editForm">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="model"
+        >Модель</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzMd]="6"
+        nzErrorTip="Обязательное поле"
+      >
+        <input formControlName="model" nz-input />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="type"
+        >Тип</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzMd]="6"
+        nzErrorTip="Обязательное поле"
+      >
+        <nz-select formControlName="type" [(ngModel)]="editForm.value.type">
+          <nz-option
+            [nzValue]="type.value"
+            [nzLabel]="type.label"
+            *ngFor="let type of carType"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label
+        [nzSm]="6"
+        [nzXs]="24"
+        nzRequired
+        nzFor="registrationNumber"
+        >Регистрационный номер</nz-form-label
+      >
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzMd]="6"
+        nzErrorTip="Обязательное поле"
+      >
+        <input formControlName="registrationNumber" nz-input />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label
+        [nzSm]="6"
+        [nzXs]="24"
+        nzRequired
+        nzFor="fuelConsumptionRate"
+        >Норма расхода топлива, л/км</nz-form-label
+      >
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Обязательное поле">
+        <nz-input-number
+          formControlName="fuelConsumptionRate"
+        ></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label
+        [nzSm]="6"
+        [nzXs]="24"
+        nzRequired
+        nzFor="winterFuelConsumptionRate"
+        >Зимняя норма расхода топлива, %</nz-form-label
+      >
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Обязательное поле">
+        <nz-input-number
+          formControlName="winterFuelConsumptionRate"
+        ></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label
+        [nzSm]="6"
+        [nzXs]="24"
+        nzRequired
+        nzFor="adBlueConsumptionRate"
+        >Норма расхода AdBlue, л/км</nz-form-label
+      >
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Обязательное поле">
+        <nz-input-number
+          formControlName="adBlueConsumptionRate"
+        ></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label
+        [nzSm]="6"
+        [nzXs]="24"
+        nzRequired
+        nzFor="weBastoConsumptionRate"
+        >Норма расхода отопителя, л/ч</nz-form-label
+      >
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Обязательное поле">
+        <nz-input-number
+          formControlName="weBastoConsumptionRate"
+        ></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary" (click)="submitForm()" [disabled]="editForm.disabled">
+          Редактировать
+        </button>
+
+        <button
+          nz-button
+          nzType="danger"
+          (click)="remove()"
+          style="float: right;"
+        >
+          Удалить
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>

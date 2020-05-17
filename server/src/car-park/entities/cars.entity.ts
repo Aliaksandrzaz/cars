@@ -12,23 +12,23 @@ export class CarsEntity {
   model: string;
 
   @Column()
-  registration_number: string;
+  registrationNumber: string;
 
   @Column()
-  fuel_consumption_rate: number;
+  fuelConsumptionRate: number;
 
   @Column()
-  winter_fuel_consumption_rate: number;
+  winterFuelConsumptionRate: number;
 
   @Column()
-  ad_blue_consumption_rate: number;
+  adBlueConsumptionRate: number;
 
   @Column()
-  we_basto_consumption_rate: number;
+  weBastoConsumptionRate: number;
 
   @Column()
   type: CarType;
 
   @OneToMany((type) => RoadListEntity, (roadList) => roadList.car)
-  road_list: RoadListEntity[];
+  roadList: RoadListEntity[];
 }

@@ -18,31 +18,31 @@ export class RoadListEntity {
   id: number;
 
   @Column()
-  road_list_id: string;
+  roadListId: string;
 
   @Column()
-  day_start: number;
+  dayStart: number;
 
   @Column({ nullable: true })
-  day_end: number;
+  dayEnd: number;
 
   @Column()
-  odometer_start: number;
+  odometerStart: number;
 
   @Column({ nullable: true })
-  odometer_end: number;
+  odometerEnd: number;
 
   @Column()
-  fuel_start: number;
+  fuelStart: number;
 
   @Column({ nullable: true })
-  fuel_end: number;
+  fuelEnd: number;
 
   @Column()
-  ad_blue_start: number;
+  adBlueStart: number;
 
   @Column({ nullable: true })
-  ad_blue_end: number;
+  adBlueEnd: number;
 
   @Column()
   temperature: number;
@@ -50,33 +50,33 @@ export class RoadListEntity {
   @Column({ nullable: true })
   route: string;
 
-  @Column({ name: 'driverId' })
-  driver_id: number;
+  @Column()
+  driverId: number;
 
-  @ManyToOne((type) => DriversEntity, (drivers) => drivers.road_list)
+  @ManyToOne((type) => DriversEntity, (drivers) => drivers.roadList)
   driver: DriversEntity;
 
-  @Column({ name: 'carId' })
-  car_id: number;
+  @Column()
+  carId: number;
 
-  @ManyToOne((type) => CarsEntity, (cars) => cars.road_list)
+  @ManyToOne((type) => CarsEntity, (cars) => cars.roadList)
   car: CarsEntity;
 
-  @Column({ nullable: true, name: 'trailerId' })
-  trailer_id: number;
+  @Column({ nullable: true})
+  trailerId: number;
 
-  @ManyToOne((type) => TrailersEntity, (trailers) => trailers.road_list)
+  @ManyToOne((type) => TrailersEntity, (trailers) => trailers.roadList)
   trailer: TrailersEntity;
 
   @OneToMany(
     (type) => DailyReportEntity,
-    (dailyReport) => dailyReport.road_list,
+    (dailyReport) => dailyReport.roadList,
   )
-  daily_reports: DailyReportEntity[];
+  dailyReports: DailyReportEntity[];
 
-  @OneToMany((type) => FuelEntity, (fuel) => fuel.road_list)
+  @OneToMany((type) => FuelEntity, (fuel) => fuel.roadList)
   fuel: FuelEntity[];
 
-  @OneToMany((type) => AdBlueEntity, (ad_blue) => ad_blue.road_list)
-  ad_blue: AdBlueEntity[];
+  @OneToMany((type) => AdBlueEntity, (ad_blue) => ad_blue.roadList)
+  adBlue: AdBlueEntity[];
 }

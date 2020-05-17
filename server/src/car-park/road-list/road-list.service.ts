@@ -26,14 +26,14 @@ export class RoadListService {
     // roadList.trailer_id = createRoadListDto.trailerId;
 
     roadList.temperature = 12;
-    roadList.day_start = 123;
-    roadList.fuel_start = 12;
-    roadList.odometer_start = 123;
-    roadList.road_list_id = '1';
-    roadList.car_id = 1;
-    roadList.driver_id = 2;
+    roadList.dayStart = 123;
+    roadList.fuelStart = 12;
+    roadList.odometerStart = 123;
+    roadList.roadListId = '1';
+    roadList.carId = 1;
+    roadList.driverId = 2;
     // roadList.trailer_id = 1;
-    roadList.ad_blue_start = 10;
+    roadList.adBlueStart = 10;
 
     return await this.roadListRepository.save(roadList);
   }
@@ -41,16 +41,16 @@ export class RoadListService {
   async editRoadList(id: number, editRoadListDto: EditRoadListDto) {
     const roadList = await this.roadListRepository.findOne(id);
 
-    roadList.road_list_id = editRoadListDto.roadListId;
+    roadList.roadListId = editRoadListDto.roadListId;
     roadList.temperature = editRoadListDto.temperature;
-    roadList.day_start = editRoadListDto.dayStart;
-    roadList.day_end = editRoadListDto.dayEnd;
-    roadList.fuel_start = editRoadListDto.fuelStart;
-    roadList.fuel_end = editRoadListDto.fuelEnd;
-    roadList.odometer_start = editRoadListDto.odometerStart;
-    roadList.odometer_end = editRoadListDto.odometerEnd;
-    roadList.ad_blue_start = editRoadListDto.adBlueStart;
-    roadList.ad_blue_end = editRoadListDto.adBlueEnd;
+    roadList.dayStart = editRoadListDto.dayStart;
+    roadList.dayEnd = editRoadListDto.dayEnd;
+    roadList.fuelStart = editRoadListDto.fuelStart;
+    roadList.fuelEnd = editRoadListDto.fuelEnd;
+    roadList.odometerStart = editRoadListDto.odometerStart;
+    roadList.odometerEnd = editRoadListDto.odometerEnd;
+    roadList.adBlueStart = editRoadListDto.adBlueStart;
+    roadList.adBlueEnd = editRoadListDto.adBlueEnd;
     // roadList.car_id = editRoadListDto.carId;
     // roadList.driver_id = editRoadListDto.driverId;
     // roadList.trailer_id = editRoadListDto.trailerId;
@@ -66,7 +66,7 @@ export class RoadListService {
     // const fuel = await this.roadListRepository.findOne(1)
     // fuel.fuel_id = 1
     return await this.roadListRepository.update(1, {
-      car_id: 2,
+      carId: 2,
     });
   }
 

@@ -1,0 +1,53 @@
+<nz-page-header>
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['../']">
+        <i nz-icon nzType="home" nzTheme="outline"></i>
+      </a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Список автомобилей
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-space nzDirection="vertical">
+  <nz-space-item>
+    <a nz-button nzType="primary" [routerLink]="['create']">Создать</a>
+  </nz-space-item>
+</nz-space>
+
+<nz-table
+  #table
+  [nzData]="list$.data | async"
+  [nzPageSizeOptions]="[1, 3]"
+  (nzPageIndexChange)="changePagination($event)"
+  nzShowSizeChanger
+>
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Модель</th>
+      <th>Регистрационный номер</th>
+      <th>Тип</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of table.data">
+      <td>{{ data.id }}</td>
+      <td>
+        <a [routerLink]="[data.id]">{{ data.model }}</a>
+      </td>
+      <td>{{ data.registrationNumber }}</td>
+      <td>{{ chooseType(data.type) }}</td>
+      <td>
+        <button nz-button nzType="primary">
+          <a [routerLink]="[data.id, 'edit']"
+            ><i nz-icon nzType="edit" nzTheme="outline"></i
+          ></a>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

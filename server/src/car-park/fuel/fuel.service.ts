@@ -35,8 +35,8 @@ export class FuelService {
       amount: body.amount,
       date: body.date,
       type: body.type,
-      road_list_id: id,
-      gas_station: body.gasStation,
+      roadListId: id,
+      gasStation: body.gasStation,
     });
 
     return await this.fuelRepository.save(fuel);
@@ -47,7 +47,7 @@ export class FuelService {
       amount: body.amount,
       date: body.date,
       type: body.type,
-      gas_station: body.gasStation,
+      gasStation: body.gasStation,
     });
   }
 

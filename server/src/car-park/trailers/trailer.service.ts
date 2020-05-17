@@ -18,7 +18,7 @@ export class TrailerService {
 
     trailer.weight = 100;
     trailer.model = 'test trailer';
-    trailer.registration_number = 'asd';
+    trailer.registrationNumber = 'asd';
     trailer.type = 'dumpTruck';
 
     return await this.trailerRepository.save(trailer);

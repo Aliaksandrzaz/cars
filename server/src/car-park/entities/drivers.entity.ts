@@ -10,5 +10,5 @@ export class DriversEntity {
   name: string;
 
   @OneToMany((type) => RoadListEntity, (roadList) => roadList.driver)
-  road_list: RoadListEntity[];
+  roadList: RoadListEntity[];
 }

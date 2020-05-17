@@ -18,6 +18,6 @@ export class AdBlueEntity {
   @CreateDateColumn()
   date: number;
 
-  @ManyToOne((type) => RoadListEntity, (roadList) => roadList.ad_blue)
-  road_list: RoadListEntity;
+  @ManyToOne((type) => RoadListEntity, (roadList) => roadList.adBlue)
+  roadList: RoadListEntity;
 }

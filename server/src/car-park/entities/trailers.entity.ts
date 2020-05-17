@@ -11,7 +11,7 @@ export class TrailersEntity {
   model: string;
 
   @Column()
-  registration_number: string;
+  registrationNumber: string;
 
   @Column()
   type: TrailerType;
@@ -20,5 +20,5 @@ export class TrailersEntity {
   weight: number;
 
   @OneToMany((type) => RoadListEntity, (roadList) => roadList.trailer)
-  road_list: RoadListEntity[];
+  roadList: RoadListEntity[];
 }
