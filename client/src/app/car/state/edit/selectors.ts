@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { CarState, getCarState } from '../index'
-import { EditCarState, editFeatureKey } from './reducer'
+import { CarState, getCarState } from '../index';
+import { EditCarState, editFeatureKey } from './reducer';
 
 export const getCarEditState = createSelector(
   getCarState,
@@ -10,4 +10,4 @@ export const getCarEditState = createSelector(
 export const getCar = createSelector(
   getCarEditState,
   (state: EditCarState) => state.car
-)
+);

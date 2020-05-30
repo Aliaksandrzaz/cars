@@ -42,7 +42,7 @@ export class FuelService {
     return await this.fuelRepository.save(fuel);
   }
 
-  async editFuel( body: EditFuelDto) {
+  async editFuel(body: EditFuelDto) {
     return await this.fuelRepository.update(body.id, {
       amount: body.amount,
       date: body.date,

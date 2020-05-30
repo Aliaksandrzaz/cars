@@ -29,6 +29,9 @@ export class CarsEntity {
   @Column()
   type: CarType;
 
+  @Column()
+  inArchive: boolean;
+
   @OneToMany((type) => RoadListEntity, (roadList) => roadList.car)
   roadList: RoadListEntity[];
 }

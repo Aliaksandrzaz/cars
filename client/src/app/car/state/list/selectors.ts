@@ -9,5 +9,11 @@ export const getListState = createSelector(
 
 export const getList = createSelector(
   getListState,
-  (state: ListState) => state.cars
+  (state: ListState) => state.list
 );
+
+export const getPaging = createSelector(getListState, (state: ListState) => ({
+  page: state.page,
+  size: state.size,
+  total: state.total,
+}));

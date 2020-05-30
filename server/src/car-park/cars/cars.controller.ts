@@ -31,9 +31,9 @@ export class CarsController {
     return this.carsService.getCar(parseFloat(param.id));
   }
 
-  @Delete(':id')
-  deleteCar(@Param() param) {
-    return this.carsService.deleteCar(parseFloat(param.id));
+  @Post(':id/archive')
+  addToArchive(@Param() param) {
+    return this.carsService.addToArchive(parseFloat(param.id));
   }
 
   @Get('')
@@ -43,5 +43,10 @@ export class CarsController {
       parseFloat(param.page),
       parseFloat(param.size),
     );
+  }
+
+  @Get('/car_type')
+  getCarsType() {
+    return this.carsService.getCarsType();
   }
 }

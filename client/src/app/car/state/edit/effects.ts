@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
+import { from, of } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd';
 import { Router } from '@angular/router';
 
 import { CarService } from '../../car.service';
 import {
-  removeCarRequest,
+  moveCarInArchiveRequest,
   fetchCarRequest,
   fetchCarSuccess,
   submitRequest,
   submitFailed,
   submitSuccess,
+  moveCarInArchiveFailed,
+  moveCarInArchiveSuccess,
 } from './actions';
+import { showNotification } from '../../../shared/notification/action';
 
 @Injectable()
 export class EditEffects {
@@ -23,7 +26,7 @@ export class EditEffects {
       mergeMap((payload) =>
         this.carService.fetchCar(payload.id).pipe(
           map((cars) => fetchCarSuccess({ data: cars })),
-          catchError(() => EMPTY)
+          catchError(() => of(showNotification({ notificationType: 'error' })))
         )
       )
     )
@@ -35,26 +38,40 @@ export class EditEffects {
       mergeMap((payload) =>
         this.carService.editCar(payload.id, payload.data).pipe(
           mergeMap(() => {
-            this.notification.success('Редактирование', 'Успешно');
-            return [submitSuccess()];
+            return [
+              submitSuccess(),
+              showNotification({ notificationType: 'success' }),
+            ];
           }),
-          catchError(() => of(submitFailed()))
+          catchError((err) =>
+            from([
+              submitFailed(err),
+              showNotification({ notificationType: 'error' }),
+            ])
+          )
         )
       )
     )
   );
 
-  removeCar$ = createEffect(() =>
+  moveInArchive$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(removeCarRequest),
+      ofType(moveCarInArchiveRequest),
       mergeMap((payload) =>
-        this.carService.removeCar(payload.id).pipe(
+        this.carService.moveInArchive(payload.id).pipe(
           mergeMap(() => {
-            this.notification.success('Удаление', 'Успешно');
             this.route.navigate(['cars']);
-            return [submitSuccess()];
+            return [
+              moveCarInArchiveSuccess(),
+              showNotification({ notificationType: 'success' }),
+            ];
           }),
-          catchError(() => of(submitFailed()))
+          catchError((err) =>
+            from([
+              moveCarInArchiveFailed(err),
+              showNotification({ notificationType: 'error' }),
+            ])
+          )
         )
       )
     )

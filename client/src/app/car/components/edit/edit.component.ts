@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 
 import { EditCarState } from '../../state/edit/reducer';
 import {
-  removeCarRequest,
+  moveCarInArchiveRequest,
   fetchCarRequest,
   submitRequest,
 } from '../../state/edit/actions';
@@ -69,7 +69,7 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   remove() {
-    this.store.dispatch(removeCarRequest({ id: this.id }));
+    this.store.dispatch(moveCarInArchiveRequest({ id: this.id }));
   }
 
   private initForm(data: Car) {

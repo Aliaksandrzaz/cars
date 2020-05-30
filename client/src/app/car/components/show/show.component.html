@@ -1,4 +1,4 @@
-<nz-page-header>
+<nz-page-header nzTitle="Характеристика">
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>
       <a [routerLink]="['/']">
@@ -11,35 +11,37 @@
       </a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
-      Детали
+      Характеристика
     </nz-breadcrumb-item>
   </nz-breadcrumb>
 </nz-page-header>
 
 <nz-card
-  style="width: 450px;"
   *ngIf="car$ | async as car"
   [nzTitle]="car.model"
+  style="width: 600px;"
 >
-  <p><span class="description">Тип: </span>{{ chooseType(car.type) }}</p>
-  <p>
-    <span class="description">Регистрационный номер: </span
-    >{{ car.registrationNumber }}
-  </p>
-  <p>
-    <span class="description">Норма расхода топлива, л/км: </span
-    >{{ car.fuelConsumptionRate }}
-  </p>
-  <p>
-    <span class="description">Зимняя норма расхода топлива, %: </span
-    >{{ car.winterFuelConsumptionRate }}
-  </p>
-  <p>
-    <span class="description">Норма расхода AdBlue, л/км: </span
-    >{{ car.adBlueConsumptionRate }}
-  </p>
-  <p>
-    <span class="description">Норма расхода отопителя, л/ч: </span
-    >{{ car.weBastoConsumptionRate }}
-  </p>
+  <nz-descriptions nzBordered>
+    <nz-descriptions-item [nzSpan]="3" nzTitle="Тип">
+      {{ chooseType(car.type) }}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzSpan]="3" nzTitle="Регистрационный номер">
+      {{ car.registrationNumber }}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzSpan]="3" nzTitle="Норма расхода топлива, л/км">
+      {{ car.fuelConsumptionRate }}
+    </nz-descriptions-item>
+    <nz-descriptions-item
+      [nzSpan]="3"
+      nzTitle="Зимняя норма расхода топлива, %"
+    >
+      {{ car.winterFuelConsumptionRate }}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzSpan]="3" nzTitle="Норма расхода AdBlue, л/км">
+      {{ car.adBlueConsumptionRate }}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzSpan]="3" nzTitle="Норма расхода отопителя, л/ч">
+      {{ car.weBastoConsumptionRate }}
+    </nz-descriptions-item>
+  </nz-descriptions>
 </nz-card>

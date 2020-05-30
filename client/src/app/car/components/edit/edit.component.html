@@ -1,4 +1,4 @@
-<nz-page-header>
+<nz-page-header nzTitle="Редактирование">
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>
       <a [routerLink]="['/']">
@@ -42,7 +42,7 @@
         [nzMd]="6"
         nzErrorTip="Обязательное поле"
       >
-        <nz-select formControlName="type" [(ngModel)]="editForm.value.type">
+        <nz-select formControlName="type" [ngModel]="editForm.value.type">
           <nz-option
             [nzValue]="type.value"
             [nzLabel]="type.label"
@@ -132,8 +132,13 @@
 
     <nz-form-item>
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button nz-button nzType="primary" (click)="submitForm()" [disabled]="editForm.disabled">
-          Редактировать
+        <button
+          nz-button
+          nzType="primary"
+          (click)="submitForm()"
+          [disabled]="!editForm.valid"
+        >
+          Сохранить
         </button>
 
         <button
@@ -142,7 +147,7 @@
           (click)="remove()"
           style="float: right;"
         >
-          Удалить
+          В архив
         </button>
       </nz-form-control>
     </nz-form-item>

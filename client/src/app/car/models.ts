@@ -1,8 +1,6 @@
 export type CarType = 'tractor' | 'dumpTruck' | string;
 export type TrailerType = 'wagon' | 'dumpTruck' | string;
 
-export type Cars = Car[];
-
 export interface Car {
   id: number;
   model: string;
@@ -12,6 +10,7 @@ export interface Car {
   adBlueConsumptionRate: number;
   weBastoConsumptionRate: number;
   type: CarType;
+  inArchive: boolean;
 }
 
 export interface CreateCarRequest {
@@ -35,6 +34,6 @@ export interface EditCarRequest {
 }
 
 export interface FetchCarsRequest {
-  page?: string;
-  size?: string;
+  page?: number;
+  size?: number;
 }

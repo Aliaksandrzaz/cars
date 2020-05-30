@@ -1,15 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Car, EditCarRequest } from '../../models';
 
-export const submitRequest = createAction(
-  '[Car | Edit] Edit car request',
-  props<{ id: string; data: EditCarRequest }>()
-);
-
-export const submitSuccess = createAction('[Car | Edit] Edit car success');
-
-export const submitFailed = createAction('[Car | Edit] Edit car failed');
-
 export const fetchCarRequest = createAction(
   '[Car | Edit] Fetch car request',
   props<{ id: string }>()
@@ -20,13 +11,28 @@ export const fetchCarSuccess = createAction(
   props<{ data: Car }>()
 );
 
-export const fetchCarFailed = createAction('[Car | Edit] Fetch car failed');
+export const submitRequest = createAction(
+  '[Car | Edit] Edit car request',
+  props<{ id: string; data: EditCarRequest }>()
+);
 
-export const removeCarRequest = createAction(
-  '[Car | Edit] Remove car request',
+export const submitSuccess = createAction('[Car | Edit] Edit car success');
+
+export const submitFailed = createAction(
+  '[Car | Edit] Edit car failed',
+  props<{ errors: any }>()
+);
+
+export const moveCarInArchiveRequest = createAction(
+  '[Car | Edit] Move car in archive request',
   props<{ id: string }>()
 );
 
-export const removeCarSuccess = createAction('[Car | Edit] Remove car success');
+export const moveCarInArchiveSuccess = createAction(
+  '[Car | Edit] Move car in archive success'
+);
 
-export const removeCarFailed = createAction('[Car | Edit] Remove car failed');
+export const moveCarInArchiveFailed = createAction(
+  '[Car | Edit] Move car in archive failed',
+  props<{ errors: any }>()
+);

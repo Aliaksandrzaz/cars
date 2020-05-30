@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ShowCarState } from '../../state/show/reducer';
 import { ActivatedRoute } from '@angular/router';
-import { fetchCar } from '../../state/show/actions';
+
+import { ShowCarState } from '../../state/show/reducer';
 import { getCar } from '../../state/show/selectors';
+import { fetchCar } from '../../state/show/actions';
 import { chooseCarType } from '../../../helpers';
 import { CarType } from '../../models';
 

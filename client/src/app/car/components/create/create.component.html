@@ -1,4 +1,4 @@
-<nz-page-header>
+<nz-page-header nzTitle="Добавление нового авто">
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>
       <a [routerLink]="['/']">
@@ -132,7 +132,7 @@
 
     <nz-form-item>
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button nz-button nzType="primary">
+        <button nz-button nzType="primary" [disabled]="!createForm.valid">
           Создать
         </button>
       </nz-form-control>

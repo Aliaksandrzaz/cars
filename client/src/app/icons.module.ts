@@ -11,6 +11,8 @@ import {
   QuestionOutline,
   DeleteOutline,
   HomeOutline,
+  CheckCircleOutline,
+  CloseCircleOutline,
 } from '@ant-design/icons-angular/icons';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd';
 
@@ -22,6 +24,8 @@ const icons: IconDefinition[] = [
   QuestionOutline,
   DeleteOutline,
   HomeOutline,
+  CheckCircleOutline,
+  CloseCircleOutline,
 ];
 
 @NgModule({

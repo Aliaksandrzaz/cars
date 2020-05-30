@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   Car,
-  Cars,
   CreateCarRequest,
   EditCarRequest,
   FetchCarsRequest,
 } from './models';
+import { Paging } from '../models';
 
 @Injectable()
 export class CarService {
   constructor(private http: HttpClient) {}
 
   fetchCars(params?: FetchCarsRequest) {
-    let params2 = new HttpParams();
-    params2 = params2.append('page', params.page);
-    params2 = params2.append('size', params.size);
+    let httpParams = new HttpParams();
 
-    return this.http.get<Cars>('/api/cars?', { params: params2 });
+    if (params.size) httpParams = httpParams.append('page', `${params.page}`);
+    if (params.page) httpParams = httpParams.append('size', `${params.size}`);
+
+    return this.http.get<Paging<Car>>('/api/cars', { params: httpParams });
   }
 
   fetchCar(id: string) {
@@ -32,7 +33,7 @@ export class CarService {
     return this.http.post(`/api/cars/${id}`, body);
   }
 
-  removeCar(id: string) {
-    return this.http.delete(`/api/cars/${id}`);
+  moveInArchive(id: string) {
+    return this.http.post(`/api/cars/${id}/archive`, {});
   }
 }

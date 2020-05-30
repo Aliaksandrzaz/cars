@@ -42,6 +42,6 @@ export class CreateComponent {
       ...this.createForm.value,
       type: this.createForm.value['type'][0],
     };
-    this.store.dispatch(submit({ data }));
+    this.store.dispatch(submit({ body: data }));
   }
 }

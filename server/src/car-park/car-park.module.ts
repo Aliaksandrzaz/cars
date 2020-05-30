@@ -19,6 +19,7 @@ import { FuelEntity } from './entities/fuel.entity';
 import { AdBlueEntity } from './entities/adblue.entity';
 import { FuelController } from './fuel/fuel-controller';
 import { FuelService } from './fuel/fuel.service';
+import { CarsTypeEntity } from './entities/cars-type.entity';
 
 @Module({
   controllers: [
@@ -46,6 +47,7 @@ import { FuelService } from './fuel/fuel.service';
       TrailersEntity,
       FuelEntity,
       AdBlueEntity,
+      CarsTypeEntity,
     ]),
   ],
 })

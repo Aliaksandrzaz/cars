@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { from } from 'rxjs';
+
 import { CarService } from '../../car.service';
-import { submit, submitSuccess } from './actions';
+import { submit, submitFailed, submitSuccess } from './actions';
+import { showNotification } from '../../../shared/notification/action';
 
 @Injectable()
 export class CreateEffects {
@@ -12,12 +13,14 @@ export class CreateEffects {
     this.actions$.pipe(
       ofType(submit),
       mergeMap((payload) =>
-        this.carService.createCars(payload.data).pipe(
-          map((cars) => {
-            console.log(cars);
-            return submitSuccess();
-          }),
-          catchError(() => EMPTY)
+        this.carService.createCars(payload.body).pipe(
+          map(() => submitSuccess()),
+          catchError((err) =>
+            from([
+              submitFailed(err),
+              showNotification({ notificationType: 'error' }),
+            ])
+          )
         )
       )
     )

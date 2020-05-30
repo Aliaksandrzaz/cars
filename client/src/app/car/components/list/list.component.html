@@ -19,9 +19,13 @@
 
 <nz-table
   #table
-  [nzData]="list$.data | async"
-  [nzPageSizeOptions]="[1, 3]"
-  (nzPageIndexChange)="changePagination($event)"
+  [nzData]="list$ | async"
+  [nzPageSizeOptions]="[1, 5, 10]"
+  [nzPageIndex]="(paging$ | async).page"
+  [nzPageSize]="(paging$ | async).size"
+  [nzTotal]="(paging$ | async).total"
+  (nzQueryParams)="changePagination($event)"
+  [nzFrontPagination]="false"
   nzShowSizeChanger
 >
   <thead>
@@ -30,6 +34,7 @@
       <th>Модель</th>
       <th>Регистрационный номер</th>
       <th>Тип</th>
+      <th>В архиве</th>
       <th></th>
     </tr>
   </thead>
@@ -42,7 +47,21 @@
       <td>{{ data.registrationNumber }}</td>
       <td>{{ chooseType(data.type) }}</td>
       <td>
-        <button nz-button nzType="primary">
+        <i
+          nz-icon
+          nzType="check-circle"
+          nzTheme="outline"
+          *ngIf="!data.inArchive"
+        ></i>
+        <i
+          nz-icon
+          nzType="close-circle"
+          nzTheme="outline"
+          *ngIf="data.inArchive"
+        ></i>
+      </td>
+      <td>
+        <button nz-button nzType="primary" [disabled]="data.inArchive">
           <a [routerLink]="[data.id, 'edit']"
             ><i nz-icon nzType="edit" nzTheme="outline"></i
           ></a>

@@ -8,4 +8,5 @@ export class CreateCarDto {
   adBlueConsumptionRate: number;
   weBastoConsumptionRate: number;
   type: CarType;
+  inArchive: boolean;
 }

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
-import { ShowComponent } from "./components/show/show.component"
+import { ShowComponent } from './components/show/show.component';
 
 const routes: Routes = [
   { path: 'cars', component: ListComponent },

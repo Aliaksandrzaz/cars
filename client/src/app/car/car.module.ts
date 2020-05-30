@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   NzBreadCrumbModule,
   NzButtonModule,
   NzCardModule,
+  NzDescriptionsModule,
   NzDividerModule,
   NzFormModule,
   NzIconModule,
@@ -19,7 +17,8 @@ import {
   NzPageHeaderModule,
   NzSelectModule,
   NzTableModule,
-} from 'ng-zorro-antd'
+} from 'ng-zorro-antd';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 import { carFeatureKey, effects, initialState, reducers } from './state';
 import { CarService } from './car.service';
@@ -28,10 +27,14 @@ import { CarRoutingModule } from './car-routing.module';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ShowComponent } from './components/show/show.component';
-import { NzSpaceModule } from "ng-zorro-antd/space"
 
 @NgModule({
-  declarations: [ListComponent, CreateComponent, EditComponent, ShowComponent],
+  declarations: [
+    ListComponent,
+    CreateComponent,
+    EditComponent,
+    ShowComponent,
+  ],
   imports: [
     CommonModule,
     CarRoutingModule,
@@ -52,7 +55,7 @@ import { NzSpaceModule } from "ng-zorro-antd/space"
     NzIconModule,
     NzPageHeaderModule,
     NzSpaceModule,
-    FormsModule
+    NzDescriptionsModule,
   ],
   providers: [CarService, NzNotificationService],
 })

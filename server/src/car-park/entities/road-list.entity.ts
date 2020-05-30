@@ -62,16 +62,13 @@ export class RoadListEntity {
   @ManyToOne((type) => CarsEntity, (cars) => cars.roadList)
   car: CarsEntity;
 
-  @Column({ nullable: true})
+  @Column({ nullable: true })
   trailerId: number;
 
   @ManyToOne((type) => TrailersEntity, (trailers) => trailers.roadList)
   trailer: TrailersEntity;
 
-  @OneToMany(
-    (type) => DailyReportEntity,
-    (dailyReport) => dailyReport.roadList,
-  )
+  @OneToMany((type) => DailyReportEntity, (dailyReport) => dailyReport.roadList)
   dailyReports: DailyReportEntity[];
 
   @OneToMany((type) => FuelEntity, (fuel) => fuel.roadList)

@@ -1,17 +1,18 @@
 import { createAction, props } from '@ngrx/store';
-import { Cars, FetchCarsRequest } from '../../models'
+import { Car, FetchCarsRequest } from '../../models';
+import { Paging } from '../../../models';
 
 export const fetchList = createAction(
   '[Car | List] Load list',
-  props< {params: FetchCarsRequest} >()
+  props<{ params: FetchCarsRequest }>()
 );
 
 export const fetchListSuccess = createAction(
   '[Car | List] List success',
-  props<{ list: Cars }>()
+  props<{ list: Paging<Car> }>()
 );
 
-export const fetchListFailed = createAction(
-  '[Car | List] List failed',
-  props<{ error: any }>()
+export const changePagination = createAction(
+  '[Car | List] Change pagination',
+  props<{ params: FetchCarsRequest }>()
 );

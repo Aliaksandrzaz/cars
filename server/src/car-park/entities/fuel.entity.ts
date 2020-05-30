@@ -1,9 +1,4 @@
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { RoadListEntity } from './road-list.entity';
 
 @Entity('fuel')
@@ -20,8 +15,8 @@ export class FuelEntity {
   @Column()
   type: string;
 
-  @Column({nullable: true})
-  gasStation: string
+  @Column({ nullable: true })
+  gasStation: string;
 
   @Column()
   roadListId: number;
