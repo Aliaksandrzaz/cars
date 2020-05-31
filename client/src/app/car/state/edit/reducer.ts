@@ -6,18 +6,22 @@ import {
   moveCarInArchiveSuccess,
   submitFailed,
   submitSuccess,
+  fetchCarsTypesSuccess,
 } from './actions';
 import { Car } from '../../models';
+import { Choice } from '../../../models';
 
 export const editFeatureKey = 'editCar';
 
 export interface EditCarState {
   car: Car | null;
+  carsTypes: Choice[];
   errors: any;
 }
 
 export const initialEditCarState: EditCarState = {
   car: null,
+  carsTypes: [],
   errors: {},
 };
 
@@ -42,5 +46,9 @@ export const editCarReducer = createReducer(
   on(moveCarInArchiveFailed, (state, { errors }) => ({
     ...state,
     errors,
+  })),
+  on(fetchCarsTypesSuccess, (state, { data }) => ({
+    ...state,
+    carsTypes: data,
   }))
 );

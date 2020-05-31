@@ -8,6 +8,7 @@ import { RoadListEntity } from './entities/road-list.entity';
 import { DriversEntity } from './entities/drivers.entity';
 import { DailyReportEntity } from './entities/daily-report.entity';
 import { TrailersEntity } from './entities/trailers.entity';
+import { CarsTypeEntity } from "./entities/cars-type.entity"
 
 @Module({
   imports: [
@@ -20,13 +21,14 @@ import { TrailersEntity } from './entities/trailers.entity';
       database: 'test',
       autoLoadEntities: true,
       synchronize: true,
-      entities: [
-        CarsEntity,
-        RoadListEntity,
-        DriversEntity,
-        DailyReportEntity,
-        TrailersEntity,
-      ],
+      // entities: [
+      //   CarsEntity,
+      //   RoadListEntity,
+      //   DriversEntity,
+      //   DailyReportEntity,
+      //   TrailersEntity,
+      //   CarsTypeEntity
+      // ],
     }),
     CarParkModule,
   ],

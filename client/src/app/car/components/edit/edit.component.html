@@ -42,11 +42,15 @@
         [nzMd]="6"
         nzErrorTip="Обязательное поле"
       >
-        <nz-select formControlName="type" [ngModel]="editForm.value.type">
+        <nz-select
+          formControlName="type"
+          [ngModel]="editForm.value.type"
+          [nzLoading]="(types | async).length === 0"
+        >
           <nz-option
             [nzValue]="type.value"
             [nzLabel]="type.label"
-            *ngFor="let type of carType"
+            *ngFor="let type of types | async"
           ></nz-option>
         </nz-select>
       </nz-form-control>

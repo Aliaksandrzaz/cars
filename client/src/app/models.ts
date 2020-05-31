@@ -10,3 +10,8 @@ export interface Pagination {
   page: number;
   total: number;
 }
+
+export interface Choice {
+  label: string;
+  value: string;
+}

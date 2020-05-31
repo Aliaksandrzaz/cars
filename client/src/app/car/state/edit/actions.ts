@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Car, EditCarRequest } from '../../models';
+import { Choice } from "../../../models"
 
 export const fetchCarRequest = createAction(
   '[Car | Edit] Fetch car request',
@@ -35,4 +36,11 @@ export const moveCarInArchiveSuccess = createAction(
 export const moveCarInArchiveFailed = createAction(
   '[Car | Edit] Move car in archive failed',
   props<{ errors: any }>()
+);
+
+export const fetchCarsTypes = createAction('[Car | Edit] Fetch cars types');
+
+export const fetchCarsTypesSuccess = createAction(
+  '[Car | Edit] Fetch cars types success',
+  props<{ data: Choice[] }>()
 );

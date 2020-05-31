@@ -6,13 +6,15 @@ import { CarsEntity } from '../entities/cars.entity';
 import { CreateCarDto } from './dto/create-car.dto';
 import { EditCarDto } from './dto/edit-car.dto';
 import { Choice, Paging } from '../../models';
-// import { CarsTypeEntity } from '../entities/cars-type.entity';
+import { CarsTypeEntity } from '../entities/cars-type.entity';
 
 @Injectable()
 export class CarsService {
   constructor(
     @InjectRepository(CarsEntity)
-    private carRepository: Repository<CarsEntity>, // private carsTypeRepository: Repository<CarsTypeEntity>,
+    private carRepository: Repository<CarsEntity>,
+    @InjectRepository(CarsTypeEntity)
+    private carsTypeRepository: Repository<CarsTypeEntity>,
   ) {}
 
   async createCar(createCar: CreateCarDto) {
@@ -93,6 +95,6 @@ export class CarsService {
   }
 
   async getCarsType() {
-    // return await this.carsTypeRepository.find();
+    return await this.carsTypeRepository.find();
   }
 }

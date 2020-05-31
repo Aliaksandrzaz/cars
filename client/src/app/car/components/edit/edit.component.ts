@@ -10,8 +10,9 @@ import {
   moveCarInArchiveRequest,
   fetchCarRequest,
   submitRequest,
+  fetchCarsTypes,
 } from '../../state/edit/actions';
-import { getCar } from '../../state/edit/selectors';
+import { getCar, getCarsTypes } from '../../state/edit/selectors';
 import { Car } from '../../models';
 
 @Component({
@@ -25,17 +26,7 @@ export class EditComponent implements OnInit, OnDestroy {
   car$ = this.store.select(getCar);
   id: string;
 
-  //TODO: GET FROM BACK
-  carType = [
-    {
-      label: 'Самосвал',
-      value: 'dumpTruck',
-    },
-    {
-      label: 'Тягач',
-      value: 'tractor',
-    },
-  ];
+  types = this.store.select(getCarsTypes);
 
   constructor(
     private fb: FormBuilder,
@@ -45,6 +36,8 @@ export class EditComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+
+    this.store.dispatch(fetchCarsTypes());
     this.store.dispatch(fetchCarRequest({ id: this.id }));
 
     this.subs$ = this.car$

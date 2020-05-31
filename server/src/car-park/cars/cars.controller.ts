@@ -16,6 +16,11 @@ import { EditCarDto } from './dto/edit-car.dto';
 export class CarsController {
   constructor(private carsService: CarsService) {}
 
+  @Get('/type')
+  getCarsType() {
+    return this.carsService.getCarsType();
+  }
+
   @Post('')
   createCar(@Body() body: CreateCarDto) {
     return this.carsService.createCar(body);
@@ -36,6 +41,8 @@ export class CarsController {
     return this.carsService.addToArchive(parseFloat(param.id));
   }
 
+
+
   @Get('')
   getAllCars(@Query() param) {
     console.log(param);
@@ -45,8 +52,5 @@ export class CarsController {
     );
   }
 
-  @Get('/car_type')
-  getCarsType() {
-    return this.carsService.getCarsType();
-  }
+
 }

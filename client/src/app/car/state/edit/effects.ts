@@ -15,6 +15,8 @@ import {
   submitSuccess,
   moveCarInArchiveFailed,
   moveCarInArchiveSuccess,
+  fetchCarsTypes,
+  fetchCarsTypesSuccess,
 } from './actions';
 import { showNotification } from '../../../shared/notification/action';
 
@@ -72,6 +74,18 @@ export class EditEffects {
               showNotification({ notificationType: 'error' }),
             ])
           )
+        )
+      )
+    )
+  );
+
+  fetchCarsType = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fetchCarsTypes),
+      mergeMap(() =>
+        this.carService.fetchCarsTypes().pipe(
+          map((data) => fetchCarsTypesSuccess({ data })),
+          catchError(() => of(showNotification({ notificationType: 'error' })))
         )
       )
     )

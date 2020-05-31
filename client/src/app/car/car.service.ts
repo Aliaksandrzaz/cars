@@ -6,7 +6,7 @@ import {
   EditCarRequest,
   FetchCarsRequest,
 } from './models';
-import { Paging } from '../models';
+import { Choice, Paging } from '../models';
 
 @Injectable()
 export class CarService {
@@ -35,5 +35,9 @@ export class CarService {
 
   moveInArchive(id: string) {
     return this.http.post(`/api/cars/${id}/archive`, {});
+  }
+
+  fetchCarsTypes() {
+    return this.http.get<Choice[]>(`/api/cars/type`);
   }
 }
