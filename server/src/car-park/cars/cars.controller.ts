@@ -1,9 +1,10 @@
 import {
   Body,
   Controller,
-  Delete,
   Get,
   Param,
+  ParseArrayPipe,
+  ParseIntPipe,
   Post,
   Query,
 } from '@nestjs/common';
@@ -27,30 +28,27 @@ export class CarsController {
   }
 
   @Post(':id')
-  editCar(@Param() param, @Body() body: EditCarDto) {
-    return this.carsService.editCar(parseFloat(param.id), body);
+  editCar(@Param('id', ParseIntPipe) id, @Body() body: EditCarDto) {
+    return this.carsService.editCar(id, body);
   }
 
   @Get(':id')
-  getCar(@Param() param) {
-    return this.carsService.getCar(parseFloat(param.id));
+  getCar(@Param('id', ParseIntPipe) id) {
+    return this.carsService.getCar(id);
   }
 
   @Post(':id/archive')
-  addToArchive(@Param() param) {
-    return this.carsService.addToArchive(parseFloat(param.id));
+  addToArchive(@Param('id', ParseIntPipe) id) {
+    return this.carsService.addToArchive(id);
   }
-
-
 
   @Get('')
-  getAllCars(@Query() param) {
-    console.log(param);
-    return this.carsService.getAllCars(
-      parseFloat(param.page),
-      parseFloat(param.size),
-    );
+  getAllCars(
+    @Query('size', ParseIntPipe) size,
+    @Query('page', ParseIntPipe) page,
+    @Query('carType', ParseArrayPipe)
+    types,
+  ) {
+    return this.carsService.getAllCars(page, size, types);
   }
-
-
 }

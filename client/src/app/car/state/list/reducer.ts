@@ -1,20 +1,27 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { changePagination, fetchListSuccess } from './actions';
+import {
+  changeCarTypesFilter,
+  changeCurrentPage,
+  changePageSize,
+  fetchListSuccess,
+} from './actions';
 import { Car } from '../../models';
 
 export interface ListState {
-  list: Car[];
+  data: Car[];
   page: number;
   size: number;
   total: number;
+  types: string[];
 }
 
 export const initialListState: ListState = {
-  list: [],
+  data: [],
   page: 1,
   total: 1,
   size: 10,
+  types: [],
 };
 
 export const listFeatureKey = 'list';
@@ -24,11 +31,17 @@ export const listReducer = createReducer(
   on(fetchListSuccess, (state, payload) => ({
     ...state,
     ...payload.list,
-    list: payload.list.data,
   })),
-  on(changePagination, (state, action) => ({
+  on(changeCarTypesFilter, (state, action) => ({
     ...state,
-    page: action.params.page,
-    size: action.params.size,
+    types: action.types,
+  })),
+  on(changeCurrentPage, (state, action) => ({
+    ...state,
+    page: action.currentPage,
+  })),
+  on(changePageSize, (state, action) => ({
+    ...state,
+    size: action.pageSize,
   }))
 );

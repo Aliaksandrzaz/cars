@@ -17,6 +17,7 @@ export class CarService {
 
     if (params.size) httpParams = httpParams.append('page', `${params.page}`);
     if (params.page) httpParams = httpParams.append('size', `${params.size}`);
+    if (params.types) httpParams = httpParams.append('carType', `${params.types}`);
 
     return this.http.get<Paging<Car>>('/api/cars', { params: httpParams });
   }

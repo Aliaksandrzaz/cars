@@ -9,11 +9,12 @@ export const getListState = createSelector(
 
 export const getList = createSelector(
   getListState,
-  (state: ListState) => state.list
+  (state: ListState) => state.data
 );
 
-export const getPaging = createSelector(getListState, (state: ListState) => ({
+export const getPagingParams = createSelector(getListState, (state: ListState) => ({
   page: state.page,
   size: state.size,
   total: state.total,
+  types: state.types,
 }));

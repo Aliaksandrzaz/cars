@@ -24,8 +24,9 @@
   [nzPageIndex]="(paging$ | async).page"
   [nzPageSize]="(paging$ | async).size"
   [nzTotal]="(paging$ | async).total"
-  (nzQueryParams)="changePagination($event)"
   [nzFrontPagination]="false"
+  (nzPageSizeChange)="changePageSize($event)"
+  (nzPageIndexChange)="changeCurrentPage($event)"
   nzShowSizeChanger
 >
   <thead>
@@ -33,7 +34,14 @@
       <th>№</th>
       <th>Модель</th>
       <th>Регистрационный номер</th>
-      <th>Тип</th>
+      <th
+        nzColumnKey="type"
+        [nzFilters]="filterCarTypes"
+        [nzFilterFn]="true"
+        (nzFilterChange)="changeCarTypesFilter($event)"
+      >
+        Тип
+      </th>
       <th>В архиве</th>
       <th></th>
     </tr>

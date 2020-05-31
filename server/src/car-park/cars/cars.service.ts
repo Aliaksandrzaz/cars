@@ -74,16 +74,25 @@ export class CarsService {
   async getAllCars(
     page: number = 1,
     size: number = 10,
+    types: string[] = [],
   ): Promise<Paging<CarsEntity>> {
     const skippedItems = (page - 1) * size;
-    const total = await this.carRepository.count();
+    const filters = types.reduce((acc, value) => {
+      acc.push({
+        type: value,
+      });
+      return acc;
+    }, []);
+
+    const total = await this.carRepository.count({where: [...filters]});
     const data = await this.carRepository.find({
+      relations: ['roadList'],
+      where: [...filters],
+      skip: skippedItems,
+      take: size,
       order: {
         id: 'DESC',
       },
-      skip: skippedItems,
-      take: size,
-      relations: ['roadList'],
     });
 
     return {

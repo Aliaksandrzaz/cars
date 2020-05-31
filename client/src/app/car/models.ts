@@ -1,3 +1,5 @@
+import { Pagination } from '../models';
+
 export type CarType = 'tractor' | 'dumpTruck' | string;
 export type TrailerType = 'wagon' | 'dumpTruck' | string;
 
@@ -36,4 +38,5 @@ export interface EditCarRequest {
 export interface FetchCarsRequest {
   page?: number;
   size?: number;
+  types?: string[];
 }

@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { Car, FetchCarsRequest } from '../../models';
 import { Paging } from '../../../models';
 
@@ -12,7 +13,17 @@ export const fetchListSuccess = createAction(
   props<{ list: Paging<Car> }>()
 );
 
-export const changePagination = createAction(
-  '[Car | List] Change pagination',
-  props<{ params: FetchCarsRequest }>()
+export const changeCarTypesFilter = createAction(
+  '[Car | List] Change car types filter',
+  props<{ types: string[] }>()
+);
+
+export const changePageSize = createAction(
+  '[Car | List] Change page size',
+  props<{ pageSize: number }>()
+);
+
+export const changeCurrentPage = createAction(
+  '[Car | List] Change current page',
+  props<{ currentPage: number }>()
 );

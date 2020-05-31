@@ -12,3 +12,9 @@ export interface Choice {
   label: string;
   value: string;
 }
+
+export interface PaginationRequest {
+  size: string;
+  page: string;
+  [key: string]: any;
+}
