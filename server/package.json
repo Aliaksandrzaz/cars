@@ -30,7 +30,7 @@
     "postgres": "^1.0.2",
     "reflect-metadata": "^0.1.13",
     "class-validator": "0.12.2",
-    "class-transformer": "0.2.3",
+    "class-transformer": "0.3.1",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "typeorm": "^0.2.24"
